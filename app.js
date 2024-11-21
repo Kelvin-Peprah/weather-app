@@ -4,7 +4,7 @@ const apiURL =
 
 const searchBox = document.getElementById('search');
 const searchButton = document.getElementById('search-button');
-let weatherImage = document.querySelector('.weather-icon');
+let weatherImagePath = '';
 
 let weatherHTML = '';
 const checkWeather = async (cityName) => {
@@ -15,25 +15,25 @@ const checkWeather = async (cityName) => {
 
 		//change weather image when weather updates
 		if (data.weather[0].main === 'Clouds') {
-			weatherImage = 'images/clouds.png';
+			weatherImagePath = 'images/clouds.png';
 		} else if (data.weather[0].main === 'Clear') {
-			weatherImage = 'images/clear.png';
+			weatherImagePath = 'images/clear.png';
 		} else if (data.weather[0].main === 'Rain') {
-			weatherImage = 'images/rain.png';
+			weatherImagePath = 'images/rain.png';
 		} else if (data.weather[0].main === 'Drizzle') {
-			weatherImage = 'images/drizzle.png';
+			weatherImagePath = 'images/drizzle.png';
 		} else if (data.weather[0].main === 'Mist') {
-			weatherImage = 'images/mist.png';
+			weatherImagePath = 'images/mist.png';
 		} else if (data.weather[0].main === 'Snow') {
-			weatherImage = 'images/snow.png';
+			weatherImagePath = 'images/snow.png';
 		} else {
-			weatherImage = 'image unavailable';
+			weatherImagePath = 'image unavailable';
 		}
 
 		// Update weatherHTML
 		weatherHTML = `
       <div>
-      <img src="${weatherImage}" alt="${data.weather[0].description}" 
+      <img src="${weatherImagePath}" alt="${data.weather[0].description}" 
         class="weather-icon" />
        <h1 class="temp">${Math.round(data.main.temp)}&deg;C</h1>
        <h2 class="city">${data.name}</h2>
@@ -68,10 +68,9 @@ searchButton.addEventListener('click', () => {
 	searchBox.value = '';
 });
 
-/* searchBox.addEventListener('keydown', (event) => {
-	checkWeather(searchBox.value);
-	searchBox.value = '';
-
-	console.log('hi');
+searchBox.addEventListener('keydown', (event) => {
+	if (event.key === 'Enter') {
+		checkWeather(searchBox.value);
+		searchBox.value = '';
+	}
 });
- */
