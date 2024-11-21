@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Weather App</title>
+
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<div class="card">
+			<div class="search">
+				<input
+					type="text"
+					name="search"
+					id="search"
+					placeholder="Enter city name"
+					spellcheck="false"
+				/>
+				<button id="search-button">
+					<img src="images/search.png" alt="search icon" />
+				</button>
+			</div>
+			<div class="weather js-weather"></div>
+		</div>
+
+		<script type="module" src="app.js"></script>
+	</body>
+</html>
