@@ -47,7 +47,7 @@ const checkWeather = async (cityName) => {
          <div class="col">
            <img src="images/wind.png" alt="wind" class="wind-icon" />
            <div>
-             <p class="wind">${data.wind.speed} km/h</p>
+             <p class="wind">${(data.wind.speed * 3.6).toFixed(1)} km/h</p>
              <p>Wind speed</p>
            </div>
          </div>
